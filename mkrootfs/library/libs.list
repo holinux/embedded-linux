@@ -1,0 +1,13 @@
+# sss.sh
+#ncurses-build.sh
+#freetype-build.sh
+#jpegsrc-build.sh
+#readline-build.sh
+
+#openssl-build.sh
+#libssh2-build.sh
+#libcurl-build.sh
+#libpng-build.sh
+pixman-build.sh
+DirectFB-build.sh
+cairo-build.sh

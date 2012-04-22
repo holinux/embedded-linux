@@ -1,0 +1,18 @@
+Submitted By: Joe Ciccone <jciccone@gmail.com>
+Date: 2009-01-03
+Initial Package Version: 2.8
+Origin: http://sources.gentoo.org/viewcvs.py/gentoo/src/patchsets/glibc/2.8/6240_all_glibc-2.8-nptl-lowlevellock.patch?rev=1.1&view=markup
+Upstream Status: Unknown
+Description: Adds a missing include to arm that fixes a compilation problem.
+
+diff -Naur glibc-2.8.orig/ports/sysdeps/unix/sysv/linux/arm/nptl/lowlevellock.h glibc-2.8/ports/sysdeps/unix/sysv/linux/arm/nptl/lowlevellock.h
+--- glibc-2.8.orig/ports/sysdeps/unix/sysv/linux/arm/nptl/lowlevellock.h	2007-09-12 08:57:25.000000000 -0400
++++ glibc-2.8/ports/sysdeps/unix/sysv/linux/arm/nptl/lowlevellock.h	2009-01-03 18:12:10.042527536 -0500
+@@ -25,6 +25,7 @@
+ #include <atomic.h>
+ #include <sysdep.h>
+ #include <kernel-features.h>
++#include <tls.h>
+ 
+ #define FUTEX_WAIT		0
+ #define FUTEX_WAKE		1

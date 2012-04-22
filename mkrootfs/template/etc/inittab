@@ -1,0 +1,50 @@
+# Begin /etc/inittab
+
+# Init
+id:3:initdefault:
+si::sysinit:/etc/init.d/rcS
+
+# Network
+#r10:345:respawn:/etc/init.d/start_sshd.sh
+#r11:345:respawn:/etc/init.d/start_lighttpd.sh
+
+# Application
+#r20:345:respawn:/etc/init.d/start_ftk.sh
+
+# Others
+su:2345:once:/sbin/getty -L s3c2410_serial0 115200 vt100
+ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+
+
+#1:2345:respawn:/sbin/agetty tty1 9600
+#2:2345:respawn:/sbin/agetty tty2 9600
+#3:2345:respawn:/sbin/agetty tty3 9600
+#4:2345:respawn:/sbin/agetty tty4 9600
+#5:2345:respawn:/sbin/agetty tty5 9600
+#6:2345:respawn:/sbin/agetty tty6 9600
+
+#l0:0:wait:/etc/rc.d/init.d/rc 0
+#l1:S1:wait:/etc/rc.d/init.d/rc 1
+#l2:2:wait:/etc/rc.d/init.d/rc 2
+#l3:3:wait:/etc/rc.d/init.d/rc 3
+#l4:4:wait:/etc/rc.d/init.d/rc 4
+#l5:5:wait:/etc/rc.d/init.d/rc 5
+#l6:6:wait:/etc/rc.d/init.d/rc 6
+
+# End /etc/inittab
+
+
+#::sysinit:/etc/init.d/rcS
+#ttySAC0::askfirst:-/bin/sh
+#s3c2410_serial0::askfirst:-/bin/sh
+#tty1::askfirst:-/bin/sh
+#tty2::askfirst:-/bin/sh
+#tty3::askfirst:-/bin/sh
+#tty4::askfirst:-/bin/sh
+#tty5::askfirst:-/bin/sh
+#tty6::askfirst:-/bin/sh
+#::ctrlaltdel:/sbin/reboot
+#::shutdown:/bin/umount -a -r
+# Put a getty on the serial line (for a terminal)
+# uncomment this line if your using a serial console
+#::respawn:/sbin/getty -L ttyS0 115200 vt100

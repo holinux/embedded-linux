@@ -1,0 +1,14 @@
+#!/bin/sh
+set -x
+ifconfig eth0 192.168.1.252 netmask 255.255.255.0
+route add default gw 192.168.1.1
+mount -a
+mkdir /dev/pts
+mount -t devpts devpts /dev/pts
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+#sysctl -w kernel.hotplug=/sbin/mdev
+mdev -s
+mkdir /dev/input
+ln -s /dev/event0 /dev/input/event0
+ln -s /dev/mice /dev/input/mice
+set +x

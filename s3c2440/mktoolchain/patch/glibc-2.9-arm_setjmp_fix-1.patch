@@ -1,0 +1,17 @@
+Submitted By: Joe Ciccone <jciccone@gmail.com>
+Date: 2009-03-31
+Initial Package Version: 2.9
+Origin: http://sourceware.org/ml/libc-ports/2008-12/msg00011.html
+Upstream Status: Unknown
+Descrpition: All the other arm setjmp.S files provide a hidden alias for
+             __sigsetjmp. Without this the build fails.
+
+diff -Naur glibc-2.9.orig/ports/sysdeps/arm/fpu/setjmp.S glibc-2.9/ports/sysdeps/arm/fpu/setjmp.S
+--- glibc-2.9.orig/ports/sysdeps/arm/fpu/setjmp.S	2001-07-06 00:55:48.000000000 -0400
++++ glibc-2.9/ports/sysdeps/arm/fpu/setjmp.S	2009-03-31 16:54:58.283164106 -0400
+@@ -33,3 +33,5 @@
+ 	/* Make a tail call to __sigjmp_save; it takes the same args.  */
+ 	B	PLTJMP(C_SYMBOL_NAME(__sigjmp_save))
+ END (__sigsetjmp)
++
++hidden_def (__sigsetjmp)
